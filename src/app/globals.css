@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    /* PeraCause Light Palette Tokens */
+    --primary: #38BDF8;
+    --primary-dark: #2563EB;
+    --primary-light: #F0F9FF;
+    --primary-glow: rgba(56, 189, 248, 0.2);
+    --primary-gradient: linear-gradient(135deg, #38BDF8 0%, #2563EB 100%);
+    
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --surface-dark: #0B1120;
+    --surface-translucent: rgba(255, 255, 255, 0.85);
+    
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    --text-tertiary: #94A3B8;
+    --border: #E2E8F0;
+    --border-subtle: #F1F5F9;
+
+    --success: #10B981;
+    --success-bg: #ECFDF5;
+    --warning: #F59E0B;
+    --warning-bg: #FEF3C7;
+    --danger: #EF4444;
+    --danger-bg: #FEF2F2;
+    --info: #0284C7;
+    --info-bg: #E0F2FE;
+
+    --radius-sm: 10px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --radius-2xl: 28px;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+    --shadow-lg: 0 12px 32px -4px rgba(15, 23, 42, 0.08);
+  }
+
+  /* PeraCause Dark Mode Tokens */
+  .dark {
+    --background: #030712;
+    --surface: #0F172A;
+    --surface-dark: #030712;
+    --surface-translucent: rgba(15, 23, 42, 0.85);
+
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-tertiary: #64748B;
+    --border: #1E293B;
+    --border-subtle: #0F172A;
+
+    --shadow-md: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 12px 32px -4px rgba(56, 189, 248, 0.15);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    font-family: "Inter", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* PeraCause Custom Utilities for Light & Dark Themes */
+.peracause-gradient-btn {
+  background: linear-gradient(135deg, #38BDF8 0%, #2563EB 100%);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.peracause-gradient-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+  filter: brightness(1.05);
+}
+
+.ios-glass {
+  background: var(--surface-translucent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+.ios-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: #38BDF8;
+}
+
+.dark .ios-card {
+  background: #0F172A;
+  border-color: #1E293B;
+}
+
+.dark .ios-card:hover {
+  border-color: #38BDF8;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.2);
+}
+
+.ios-input {
+  background-color: var(--border-subtle);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.dark .ios-input {
+  background-color: #1E293B;
+  color: #F8FAFC;
+}
+
+.ios-input:focus {
+  outline: none;
+  background-color: var(--surface);
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* PeraCause Dark Theme — explicit utility overrides for pages that use dynamic class strings */
+.dark .kanban-col-bg {
+  background-color: rgba(15, 23, 42, 0.6);
+  border-color: #1E293B;
+}
+.dark .kanban-col-bg-over {
+  background-color: rgba(30, 41, 59, 0.8);
+  border-color: #38BDF8;
+}
+
+/* Dark surface cards */
+.dark .surface-card {
+  background-color: #0F172A;
+  border-color: #1E293B;
+}
+
+/* Dark page header */
+.dark .page-header-text {
+  color: #F8FAFC;
+}
+.dark .page-subtext {
+  color: #94A3B8;
+}
+
+/* Force dark body background on all routes */
+.dark main,
+.dark [data-main-content] {
+  background-color: #030712;
+}
+
+/* ── Skeleton shimmer: dark mode override ── */
+/* In light mode Tailwind's animate-pulse fades between bg-slate-200 ↔ transparent.
+   In dark mode we remap it so skeletons pulse between #1E293B and #0F172A. */
+@keyframes skeleton-dark-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.dark .animate-pulse {
+  animation: skeleton-dark-pulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
