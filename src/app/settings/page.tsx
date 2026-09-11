@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Settings as SettingsIcon, CreditCard } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
@@ -10,6 +10,14 @@ import { Badge } from "@/components/ui/Badge";
 import { Tabs } from "@/components/ui/Tabs";
 
 export default function SettingsPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-400">Loading settings...</div>}>
+      <SettingsContent />
+    </Suspense>
+  );
+}
+
+function SettingsContent() {
   const searchParams = useSearchParams();
   const initialTab = searchParams.get("tab") || "profile";
 
